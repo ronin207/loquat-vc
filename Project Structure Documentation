@@ -1,0 +1,70 @@
+# Loquat-VC Project Structure Documentation
+
+## Project Overview
+
+Loquat-VC is a Rust project implementing verifiable credentials functionality. This document explains the project structure and provides instructions for running tests and examples.
+
+## Project Structure
+
+The project follows a standard Rust project layout:
+
+```
+loquat-vc/
+├── src/             # Source code
+│   ├── signature/   # Signature implementation including loquat.rs
+│   └── ...
+├── tests/           # Integration tests
+├── examples/        # Example code
+│   ├── keygen.rs    # Key generation example
+│   └── ...
+├── Cargo.toml       # Project configuration
+└── README.md        # Project documentation
+```
+
+## Running Tests
+
+Tests are defined within the code (e.g., in `src/signature/loquat.rs`) and are run via the test harness. To run all tests:
+
+```bash
+cargo test
+```
+
+To run a specific test:
+
+```bash
+cargo test <test_name>
+```
+
+## Running Examples
+
+Examples are located in the root-level `examples/` directory. Cargo looks for example files in this directory when executing the `--example` flag.
+
+To run an example:
+
+```bash
+cargo run --example <example_name>
+```
+
+For instance, to run the key generation example:
+
+```bash
+cargo run --example keygen
+```
+
+## Troubleshooting
+
+If you encounter issues running examples:
+
+1. Verify that you are executing the command from the project root directory
+2. Check that the example file exists in the `examples/` directory
+3. Ensure there are no typos in the example name
+4. Verify that the `Cargo.toml` file correctly references any dependencies needed by the examples
+
+## Development Guidelines
+
+When adding new examples:
+
+1. Place the example file in the `examples/` directory
+2. Name the file appropriately (e.g., `my_example.rs`)
+3. Run the example using `cargo run --example my_example`
+4. Update this documentation if necessary to include information about the new example

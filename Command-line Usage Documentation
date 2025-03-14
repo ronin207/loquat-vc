@@ -1,0 +1,88 @@
+# Troubleshooting 'cargo run --example' Command Issues
+
+## Introduction
+This document provides guidance on resolving common issues when using the `cargo run --example` command. While this command is designed to run example code from your Rust project, several factors can cause it to fail even when the example files exist.
+
+## Understanding the Command
+The `cargo run --example` command is used to execute example code in your Rust project. Examples are typically stored in the `examples/` directory at the root of your project.
+
+Syntax:
+```
+cargo run --example <example_name>
+```
+
+## Common Issues and Solutions
+
+### 1. Case Sensitivity
+**Issue**: The `cargo run --example` command is case-sensitive.
+
+**Solution**: Ensure that the example name in your command exactly matches the filename (without the `.rs` extension). For instance:
+
+- If your file is named `keygen.rs`, use `cargo run --example keygen`
+- If your file is named `KeyGen.rs`, use `cargo run --example KeyGen`
+
+### 2. File Naming Conventions
+**Issue**: Cargo expects example files to follow specific naming conventions.
+
+**Solution**: 
+- Example files should be placed in the `examples/` directory
+- Filenames should use snake_case (e.g., `my_example.rs`)
+- The filename (without extension) must match exactly what you provide to the `--example` flag
+
+### 3. Cargo Configuration Interference
+**Issue**: Custom Cargo configurations can sometimes interfere with the default behavior.
+
+**Solution**:
+- Check for any custom configurations in `.cargo/config` or `.cargo/config.toml` in your project or user directory
+- Look for build scripts (`build.rs`) that might be altering the build process
+- Temporarily rename or move these files to see if the issue resolves
+
+### 4. Dependencies and Features
+**Issue**: The example might require specific dependencies or features that aren't enabled.
+
+**Solution**:
+- Ensure all dependencies required by the example are properly listed in your `Cargo.toml`
+- If the example requires specific features, include them with `--features`:
+  ```
+  cargo run --example keygen --features "feature1 feature2"
+  ```
+
+### 5. Path Issues
+**Issue**: Cargo might not be finding your examples directory.
+
+**Solution**:
+- Verify that the `examples/` directory is at the root of your project
+- Check that your working directory is the project root when running the command
+- Ensure the example file has the `.rs` extension
+
+### 6. Compilation Errors
+**Issue**: The example might fail to compile due to code errors.
+
+**Solution**:
+- Try running `cargo check --example <example_name>` to see compilation errors
+- Fix any errors in the example code
+- Ensure the example is compatible with your current Rust version
+
+## Advanced Troubleshooting
+
+### Verbose Output
+Run the command with increased verbosity to get more information:
+```
+cargo run -v --example keygen
+```
+
+### Cargo Metadata
+Examine your project's metadata to ensure examples are properly recognized:
+```
+cargo metadata --format-version=1
+```
+
+### Clean Build
+Try cleaning your project before running the example:
+```
+cargo clean
+cargo run --example keygen
+```
+
+## Conclusion
+If you've followed all the steps above and are still experiencing issues, consider checking the Cargo documentation or seeking help from the Rust community. Remember that the most common issues are related to case sensitivity and configuration interference.

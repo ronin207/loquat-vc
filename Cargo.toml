@@ -1,0 +1,22 @@
+[package]
+name = "loquat-vc"
+version = "0.1.0"
+edition = "2021"
+
+# Examples are automatically discovered from the 'examples' directory
+# Run with: cargo run --example keygen
+
+[dependencies]
+rand = "0.8"
+num-bigint = { version = "0.4", features = ["rand"] }
+num-traits = "0.2"
+sha3 = "0.10"
+tiny-keccak = { version = "2.0", features = ["keccak"] }
+bincode = "1.3"
+serde = { version = "1.0", features = ["derive"] }
+ark-ff = "0.4"
+
+# Optional: Explicitly define the example if automatic discovery isn't working
+[[example]]
+name = "keygen"
+path = "examples/keygen.rs"
