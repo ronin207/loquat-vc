@@ -1,16 +1,16 @@
-# Loquat: A Verifiable Credential Scheme
+# Loquat: A Post-Quantum Digital Signature Scheme
 
-Loquat is a verifiable credential scheme designed for efficient and secure credential management. It implements a signature scheme that allows for selective disclosure of attributes while maintaining cryptographic integrity.
+Loquat is a post-quantum digital signature scheme as defined in the [academic paper](https://eprint.iacr.org/2024/868.pdf). It implements a post-quantum secure digital signature and is actively working towards implementing verifiable credentials that will allow for selective disclosure of attributes while maintaining cryptographic integrity.
 
 ## Overview
 
-Loquat uses a Merkle tree-based approach for credential verification, enabling selective disclosure of attributes while maintaining the integrity of the credential. This approach allows the holder to reveal only specific attributes to verifiers without compromising the security of the entire credential.
+Loquat uses a Merkle tree-based approach for its signature scheme, providing post-quantum security guarantees. This approach will eventually enable selective disclosure of attributes in verifiable credentials while maintaining the integrity of the credential, allowing holders to reveal only specific attributes to verifiers without compromising security.
 
 ## Key Components
 
-- **Issuer**: Creates and signs credentials
-- **Holder**: Receives credentials and presents them to verifiers
-- **Verifier**: Validates the authenticity of presented credentials
+- **Issuer**: Creates and signs digital signatures (and eventually credentials)
+- **Holder**: Receives signed data (and eventually credentials) and presents them to verifiers
+- **Verifier**: Validates the authenticity of signatures (and eventually presented credentials)
 
 ## Signature Verification
 
@@ -75,3 +75,14 @@ cargo add loquat-vc
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Roadmap
+
+The current implementation of Loquat focuses on providing a secure post-quantum digital signature scheme as described in the academic paper. Future releases will expand this foundation to include:
+
+1. Complete verifiable credential functionality
+2. Enhanced selective disclosure mechanisms
+3. Integration with existing identity systems
+4. Additional credential formats and protocols
+
+We are actively developing these features to transform Loquat from a digital signature scheme into a full-fledged verifiable credential system while maintaining its post-quantum security guarantees.
